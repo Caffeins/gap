@@ -7,11 +7,16 @@ from .models import User
 
 
 class UserAdmin(BaseUserAdmin):
+    """
+    adminページの設定
+    """
+
     form = UserChangeForm
     add_form = UserCreationForm
 
     list_display = (
         "email",
+        "clan",
         "name",
         "ailias",
         "date_of_birth",
@@ -27,6 +32,7 @@ class UserAdmin(BaseUserAdmin):
             "Personal info",
             {
                 "fields": (
+                    "clan",
                     "name",
                     "ailias",
                     "date_of_birth",

@@ -1,8 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+from clan.models import Clan
 
 # 同じ処理をしているのでできれば省略したい
 class UserManager(BaseUserManager):
+    """
+    ユーザ作成の処理をするクラス。
+    """
+
     def create_user(
         self, email, date_of_birth, image, hobby, ailias, password=None
     ):
@@ -28,8 +33,13 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
+    """
+    クランとフォロー、フォロワーのフォーリンキーを付け足す
+    """
+
+    clan = models.ForeignKey(Clan, on_delete=models.SET_NULL, null=True)
     email = models.EmailField(
-        verbose_name="メールアドレス", max_length=255, unique=True
+        verbose_name="メールアドレス", max_length=255, unique=True, default=None
     )
     date_of_birth = models.DateField(verbose_name="誕生日", null=True)
     name = models.CharField(
