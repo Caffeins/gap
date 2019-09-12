@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "clan",
     "account",
     "follow",
+    "event",
+    "channels",
 ]
 
 MIDDLEWARE = [
