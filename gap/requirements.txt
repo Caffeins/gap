@@ -1,0 +1,6 @@
+Django
+psycopg2
+channels
+Pillow
+Redis
+channels-redis

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "follow",
     "event",
     "channels",
+    "chat",
 ]
 
 MIDDLEWARE = [
@@ -80,11 +81,13 @@ WSGI_APPLICATION = "gap.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "NAME": "postgres",
+        "USER": "postgres",
+        "HOST": "db",
+        "PORT": 5432,
     }
 }
-
 
 AUTH_USER_MODEL = "account.User"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
@@ -124,3 +127,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = "/static/"
+ASGI_APPLICATION = "gap.routing.application"
+
+REDIS_HOST = os.environ.get("REDIS_HOST", "127.0.0.1")
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {"hosts": [("redis", 6379)]},
+    }
+}
