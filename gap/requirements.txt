@@ -7,3 +7,4 @@ channels-redis
 djangorestframework
 django-filter
 django-rest-swagger
+django-cors-headers
