@@ -9,7 +9,7 @@ class UserManager(BaseUserManager):
     """
 
     def create_user(
-        self, email, date_of_birth, image, hobby, ailias, password=None
+        self, email, date_of_birth, image, hobby, alias, password=None
     ):
         if not email:
             raise ValueError("メールアドレスが必要です")
@@ -18,7 +18,7 @@ class UserManager(BaseUserManager):
             date_of_birth=date_of_birth,
             image=image,
             hobby=hobby,
-            ailias=ailias,
+            alias=alias,
         )
         user.set_password(password)
         user.save(using=self._db)
@@ -45,7 +45,7 @@ class User(AbstractBaseUser):
     name = models.CharField(
         verbose_name="ユーザ名", max_length=255, default=None, null=True
     )
-    ailias = models.CharField(verbose_name="ニックネーム", max_length=255, null=True)
+    alias = models.CharField(verbose_name="ニックネーム", max_length=255, null=True)
     image = models.ImageField(
         verbose_name="サムネ画像", upload_to="photos", default=None
     )

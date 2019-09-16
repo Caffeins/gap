@@ -18,7 +18,7 @@ class UserAdmin(BaseUserAdmin):
         "email",
         "clan",
         "name",
-        "ailias",
+        "alias",
         "date_of_birth",
         "image",
         "hobby",
@@ -34,7 +34,7 @@ class UserAdmin(BaseUserAdmin):
                 "fields": (
                     "clan",
                     "name",
-                    "ailias",
+                    "alias",
                     "date_of_birth",
                     "image",
                     "hobby",

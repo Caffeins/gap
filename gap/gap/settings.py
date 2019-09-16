@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "event",
     "channels",
     "chat",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
