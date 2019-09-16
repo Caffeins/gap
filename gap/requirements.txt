@@ -6,3 +6,4 @@ Redis
 channels-redis
 djangorestframework
 django-filter
+django-rest-swagger

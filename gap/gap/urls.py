@@ -7,6 +7,11 @@ from chat.urls import router as chat_router
 from clan.urls import router as clan_router
 from event.urls import router as event_router
 from follow.urls import router as follow_router
+from django.urls import path
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title="API Lists")
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -16,4 +21,5 @@ urlpatterns = [
     path("clan_api/", include(clan_router.urls)),
     path("event_api/", include(event_router.urls)),
     path("follow_api/", include(follow_router.urls)),
+    path("swagger/", schema_view),
 ]

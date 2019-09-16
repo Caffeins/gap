@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "channels",
     "chat",
     "rest_framework",
+    "rest_framework_swagger",
 ]
 
 MIDDLEWARE = [
@@ -137,4 +138,8 @@ CHANNEL_LAYERS = {
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {"hosts": [("redis", 6379)]},
     }
+}
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema"
 }
