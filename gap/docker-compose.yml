@@ -2,11 +2,13 @@ version: '2'
 services:
   db:
     image: postgres
-  web:
-    build: .
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/code
+      - ./backend:/backend
     ports:
       - "8000:8000"
     depends_on:
@@ -14,3 +16,12 @@ services:
       - redis
   redis:
     image: "redis:alpine"
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/frontend
+    ports:
+      - "3000:3000"
+    command: npm start
