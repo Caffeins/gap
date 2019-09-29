@@ -1,5 +1,6 @@
 Django
 psycopg2
+psycopg2-binary
 channels
 Pillow
 Redis
