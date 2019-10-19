@@ -25,7 +25,6 @@ class Event(models.Model):
     leader = models.CharField(max_length=255, null=False, default=None)
     created_at = models.DateField(auto_now_add=True)
     place = models.CharField(max_length=255, null=False, default=None)
-    content = models.TextField(max_length=1023, null=False, default=None)
     address = models.CharField(max_length=255, null=False, default=None)
     latitude = models.DecimalField(
         max_digits=8, decimal_places=6, default=None
