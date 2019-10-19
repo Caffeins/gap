@@ -10,6 +10,7 @@ import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import UserList from '../../components/pages/Board/UserIndex.js';
 import Board from '../../components/pages/Board/ClanIndex.js';
 import EventList from '../../components/pages/Events';
+import UpdateProfile from '../../components/pages/MyUser/UpdateProfile.js';
 
 class Sidebar extends Component {
   constructor() {
@@ -51,9 +52,11 @@ class Sidebar extends Component {
                   <ListItemText primary={'ホーム'} />
                 </ListItem>
               </Link>
-              <ListItem button>
-                <ListItemText primary={'プロフィールを編集'} />
-              </ListItem>
+              <Link to="/user/update">
+                <ListItem button>
+                  <ListItemText primary={'プロフィールを編集'} />
+                </ListItem>
+              </Link>
               <ListItem button>
                 <ListItemText primary={'所属クラン'} />
               </ListItem>
@@ -86,6 +89,9 @@ class Sidebar extends Component {
           </Drawer>
 
           <Switch>
+            <Route path="/user/update">
+              <UpdateProfile />
+            </Route>
             <Route path="/follow">
               <UserList />
             </Route>
