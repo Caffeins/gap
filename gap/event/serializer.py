@@ -11,6 +11,17 @@ class EventSerializer(serializers.ModelSerializer):
             "held_at",
             "created_at",
             "place",
-            "content",
-            "participant",
+            "hobby",
+            "member_capacity",
+            "leader",
+            "image",
+            "leader",
+            "address",
+            "latitude",
+            "longitude",
+            "introduction",
+            
+            
+
+
         )
