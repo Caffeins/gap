@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import include, path
-
+from django.conf import settings
+from django.conf.urls.static import static
 from account.urls import router as account_router
 from chat.urls import router as chat_router
 from clan.urls import router as clan_router
@@ -22,3 +23,8 @@ urlpatterns = [
     path("follow_api/", include(follow_router.urls)),
     path("swagger/", schema_view),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
+    )
