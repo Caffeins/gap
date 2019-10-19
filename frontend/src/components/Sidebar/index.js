@@ -9,6 +9,7 @@ import axios from 'axios';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import UserList from '../../components/pages/Board/UserIndex.js';
 import Board from '../../components/pages/Board/ClanIndex.js';
+import EventList from '../../components/pages/Events';
 
 class Sidebar extends Component {
   constructor() {
@@ -56,9 +57,11 @@ class Sidebar extends Component {
               <ListItem button>
                 <ListItemText primary={'所属クラン'} />
               </ListItem>
-              <ListItem button>
-                <ListItemText primary={'参加しているイベント'} />
-              </ListItem>
+              <Link to="/events">
+                <ListItem button>
+                  <ListItemText primary={'参加しているイベント'} />
+                </ListItem>
+              </Link>
               <Link to="/follow">
                 <ListItem button>
                   <ListItemText primary={'フォロー/フォロワー'} />
@@ -85,6 +88,9 @@ class Sidebar extends Component {
           <Switch>
             <Route path="/follow">
               <UserList />
+            </Route>
+            <Route path="/events">
+              <EventList />
             </Route>
             <Route path="/">
               <Board />
