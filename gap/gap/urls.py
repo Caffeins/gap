@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
-from account.urls import router as account_router
+from accounts.urls import router as account_router
 from chat.urls import router as chat_router
 from clan.urls import router as clan_router
 from event.urls import router as event_router
@@ -22,6 +22,7 @@ urlpatterns = [
     path("event_api/", include(event_router.urls)),
     path("follow_api/", include(follow_router.urls)),
     path("swagger/", schema_view),
+    path("rest-auth/", include("rest_auth.urls")),
 ]
 
 if settings.DEBUG:
