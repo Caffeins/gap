@@ -3,4 +3,4 @@ from .views import FollowViewSet
 
 
 router = routers.DefaultRouter()
-router.register(r"follows", FollowViewSet)
+router.register(r"follows", FollowViewSet, basename="Follow")
