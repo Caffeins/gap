@@ -10,3 +10,4 @@ django-filter
 django-rest-swagger
 django-cors-headers
 black
+django-heroku
