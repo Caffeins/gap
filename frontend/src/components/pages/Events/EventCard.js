@@ -22,35 +22,35 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const UserCard = props => {
+const EventCard = props => {
   const classes = useStyles();
-  const {user} = props;
-  let following = true;
+  const {event} = props;
+  let attending = true;
   return (
     <div>
       <Card className={classes.card}>
-        <Avatar src={user.image} />
-        <CardHeader title={user.name} subheader={user.date_of_birth} />
-        <CardMedia image={user.image} />
+        <Avatar src={event.image} />
+        <CardHeader title={event.name} />
+        <CardMedia image={event.image} />
         <CardContent>
           <Typography>
             <List>
               <ListItem>
-                <ListItemText primary={user.introduction} />
+                <ListItemText primary={event.introduction} />
               </ListItem>
               <ListItem>
-                <ListItemText primary={user.place} />
+                <ListItemText primary={event.place} />
               </ListItem>
             </List>
           </Typography>
         </CardContent>
-        {following ? (
+        {attending ? (
           <Button variant="contained" color="primary">
-            フォローする
+            参加する
           </Button>
         ) : (
           <Button variant="contained" color="secondary">
-            フォローを外す
+            参加しない
           </Button>
         )}
       </Card>
@@ -58,4 +58,4 @@ const UserCard = props => {
   );
 };
 
-export default UserCard;
+export default EventCard;

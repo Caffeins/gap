@@ -17,4 +17,5 @@ class UserSerializer(serializers.ModelSerializer):
             "place",
             "is_active",
             "is_admin",
+            "introduction",
         )
