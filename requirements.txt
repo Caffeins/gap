@@ -10,10 +10,10 @@ django-filter
 django-rest-swagger
 django-cors-headers
 black
-<<<<<<< HEAD
+
 django-rest-auth
 django-allauth
 djangorestframework-serializer-extensions
-=======
+
 django-heroku
->>>>>>> 45ae499fc15fe0007d97571e1d7e74e3ecb3a24d
+
