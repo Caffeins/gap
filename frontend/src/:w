@@ -65,7 +65,7 @@ class Sidebar extends Component {
           </List>
           <Divider />
           <List>
-            <ListItem button>
+              <ListItem button>
               <ListItemText primary={'ログアウト'} />
             </ListItem>
           </List>
