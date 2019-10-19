@@ -1,10 +1,10 @@
-import React from "react";
-import DropZone from "react-dropzone";
-import axios from "axios";
-import Form from "muicss/lib/react/form";
-import Input from "muicss/lib/react/input";
-import Textarea from "muicss/lib/react/textarea";
-import Button from "muicss/lib/react/button";
+import React from 'react';
+import DropZone from 'react-dropzone';
+import axios from 'axios';
+import Form from 'muicss/lib/react/form';
+import Input from 'muicss/lib/react/input';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import Button from '@material-ui/core/Button';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -12,33 +12,34 @@ class Profile extends React.Component {
     this.state = {
       image: [],
       inputs: {
-        name: "",
-        alies: "",
-        hobby: "",
-        address: "",
-        email: "",
-        birthday: "",
-        introduce: ""
-      }
+        name: '',
+        alies: '',
+        hobby: '',
+        address: '',
+        email: '',
+        birthday: '',
+        introduce: '',
+      },
     };
     this.handleDrop = this.handleDrop.bind(this);
-    //this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleDrop(file) {
-    this.setState({ image: file });
+    this.setState({image: file});
   }
   handleSubmit(e) {
     axios
-      .post("http://localhost:8000/account_api/users/", {
+      .post('http://localhost:8000/account_api/users/', {
         email: this.state.inputs.email,
         date_of_birth: this.state.inputs.birthday,
         name: this.state.inputs.name,
         alias: this.state.inputs.alies,
         image: this.state.image[0],
         hobby: this.state.inputs.hobby,
-        place: this.state.inputs.address
+        place: this.state.inputs.address,
       })
       .then(function(response) {
+        console.log(this.state.inputs);
         console.log(response);
       })
       .catch(function(error) {
@@ -48,7 +49,7 @@ class Profile extends React.Component {
 
   handleChange(data) {
     console.log(data);
-    this.setState({ inputs: data.inputs });
+    this.setState({inputs: data.inputs});
   }
   render() {
     return (
@@ -59,11 +60,11 @@ class Profile extends React.Component {
           onChange={e =>
             this.handleChange({
               ...this.state,
-              inputs: { ...this.state.inputs, name: e.target.value }
+              inputs: {...this.state.inputs, name: e.target.value},
             })
           }
           // 差分のみを適用
-          defaultValue={this.state.inputs["name"]}
+          defaultValue={this.state.inputs['name']}
         />
         <label>ニックネーム</label>
         <Input
@@ -71,10 +72,10 @@ class Profile extends React.Component {
           onChange={e =>
             this.handleChange({
               ...this.state,
-              inputs: { ...this.state.inputs, alies: e.target.value }
+              inputs: {...this.state.inputs, alies: e.target.value},
             })
           }
-          defaultValue={this.state.inputs["alies"]}
+          defaultValue={this.state.inputs['alies']}
         />
         <label>趣味</label>
         <Input
@@ -82,10 +83,10 @@ class Profile extends React.Component {
           onChange={e =>
             this.handleChange({
               ...this.state,
-              inputs: { ...this.state.inputs, hobby: e.target.value }
+              inputs: {...this.state.inputs, hobby: e.target.value},
             })
           }
-          defaultValue={this.state.inputs["hobby"]}
+          defaultValue={this.state.inputs['hobby']}
         />
         <label>住んでるところ</label>
         <Input
@@ -93,10 +94,10 @@ class Profile extends React.Component {
           onChange={e =>
             this.handleChange({
               ...this.state,
-              inputs: { ...this.state.inputs, address: e.target.value }
+              inputs: {...this.state.inputs, address: e.target.value},
             })
           }
-          defaultValue={this.state.inputs["address"]}
+          defaultValue={this.state.inputs['address']}
         />
         <label>Eメール</label>
         <Input
@@ -104,10 +105,10 @@ class Profile extends React.Component {
           onChange={e =>
             this.handleChange({
               ...this.state,
-              inputs: { ...this.state.inputs, email: e.target.value }
+              inputs: {...this.state.inputs, email: e.target.value},
             })
           }
-          defaultValue={this.state.inputs["email"]}
+          defaultValue={this.state.inputs['email']}
         />
         <label>誕生日</label>
         <Input
@@ -115,14 +116,14 @@ class Profile extends React.Component {
           onChange={e =>
             this.handleChange({
               ...this.state,
-              inputs: { ...this.state.inputs, birthday: e.target.value }
+              inputs: {...this.state.inputs, birthday: e.target.value},
             })
           }
-          defaultValue={this.state.inputs["birthday"]}
+          defaultValue={this.state.inputs['birthday']}
         />
         <label>プロフィール画像</label>
         <DropZone onDrop={file => this.handleDrop(file)}>
-          {({ getRootProps, getInputProps }) => (
+          {({getRootProps, getInputProps}) => (
             <section>
               <div {...getRootProps()}>
                 <input {...getInputProps()} />
@@ -143,15 +144,15 @@ class Profile extends React.Component {
           );
         })}
         <label>自己紹介</label>
-        <Textarea
+        <TextareaAutosize
           name="introduce"
           onChange={e =>
             this.handleChange({
               ...this.state,
-              inputs: { ...this.state.inputs, introduce: e.target.value }
+              inputs: {...this.state.inputs, introduce: e.target.value},
             })
           }
-          defaultValue={this.state.inputs["introduce"]}
+          defaultValue={this.state.inputs['introduce']}
         />
         <Button variant="raised" onClick={this.handleSubmit}>
           Submit

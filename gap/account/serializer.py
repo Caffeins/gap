@@ -7,7 +7,6 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
-            "clan",
             "email",
             "date_of_birth",
             "name",
@@ -15,7 +14,5 @@ class UserSerializer(serializers.ModelSerializer):
             "image",
             "hobby",
             "place",
-            "is_active",
-            "is_admin",
             "introduction",
         )
