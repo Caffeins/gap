@@ -16,13 +16,13 @@ class UserAdmin(BaseUserAdmin):
 
     list_display = (
         "email",
-        "clan",
         "name",
         "alias",
         "date_of_birth",
         "image",
         "hobby",
         "place",
+        "introduction",
         "is_admin",
     )
     list_filter = ("is_admin",)
@@ -32,13 +32,13 @@ class UserAdmin(BaseUserAdmin):
             "Personal info",
             {
                 "fields": (
-                    "clan",
                     "name",
                     "alias",
                     "date_of_birth",
                     "image",
                     "hobby",
                     "place",
+                    "introduction",
                 )
             },
         ),
