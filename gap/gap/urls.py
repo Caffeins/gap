@@ -22,4 +22,3 @@ urlpatterns = [
     path("follow_api/", include(follow_router.urls)),
     path("swagger/", schema_view),
 ]
-
