@@ -12,4 +12,4 @@ django-cors-headers
 black
 django-rest-auth
 django-allauth
-
+djangorestframework-serializer-extensions

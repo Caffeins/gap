@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "rest_auth.registration",
     "django.contrib.sites",
+    "rest_framework_serializer_extensions",
 ]
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

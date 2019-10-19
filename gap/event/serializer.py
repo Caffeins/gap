@@ -20,8 +20,4 @@ class EventSerializer(serializers.ModelSerializer):
             "latitude",
             "longitude",
             "introduction",
-            
-            
-
-
         )
