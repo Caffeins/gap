@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 from clan.models import Clan
+from event.models import Event
+
 
 # 同じ処理をしているのでできれば省略したい
 class UserManager(BaseUserManager):
@@ -37,7 +39,8 @@ class User(AbstractBaseUser):
     クランとフォロー、フォロワーのフォーリンキーを付け足す
     """
 
-    clan = models.ForeignKey(Clan, on_delete=models.SET_NULL, null=True)
+    clan = models.ManyToManyField(Clan, null=True)
+    event = models.ManyToManyField(Event, null=True)
     email = models.EmailField(
         verbose_name="メールアドレス", max_length=255, unique=True, default=None
     )
@@ -65,7 +68,9 @@ class User(AbstractBaseUser):
         null=True,
         blank=True,
     )
-
+    introduction = models.TextField(
+        verbose_name="紹介", default=None, max_length=2000, null=True
+    )
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
@@ -85,3 +90,4 @@ class User(AbstractBaseUser):
     @property
     def is_staff(self):
         return self.is_admin
+
