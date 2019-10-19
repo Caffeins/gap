@@ -1,7 +1,8 @@
-import React from "react";
-import "./App.css";
-import Home from "./components/pages/Home";
-import Sidebar from "./components/Sidebar";
+import React from 'react';
+import './App.css';
+import Home from './components/pages/Home';
+import Sidebar from './components/Sidebar';
+import Board from './components/pages/Board';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Sidebar />
 
       <Home />
+      <Board />
     </div>
   );
 }
