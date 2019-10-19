@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework_swagger",
     "corsheaders",
+    "rest_framework.authtoken",
+    "rest_auth",
 ]
 
 MIDDLEWARE = [
@@ -146,5 +148,9 @@ CHANNEL_LAYERS = {
 }
 
 REST_FRAMEWORK = {
-    "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema"
+    "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
+    "DEFAULT_AUTHENTICATION_CLASSES": [  # 追加
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ],
 }
