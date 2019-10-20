@@ -16,4 +16,4 @@ django-allauth
 djangorestframework-serializer-extensions
 
 django-heroku
-
+geocoder

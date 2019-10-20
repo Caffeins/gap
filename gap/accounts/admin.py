@@ -6,6 +6,14 @@ from .forms import UserChangeForm, UserCreationForm
 from .models import User
 
 
+class ClanInline(admin.TabularInline):
+    model = User.clan.through
+
+
+class EventInline(admin.TabularInline):
+    model = User.event.through
+
+
 class UserAdmin(BaseUserAdmin):
     """
     adminページの設定
@@ -57,6 +65,7 @@ class UserAdmin(BaseUserAdmin):
     search_fields = ("email",)
     ordering = ("email",)
     filter_horizontal = ()
+    inlines = [ClanInline, EventInline]
 
 
 admin.site.register(User, UserAdmin)
