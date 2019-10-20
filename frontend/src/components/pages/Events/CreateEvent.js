@@ -13,10 +13,10 @@ class CreateEvent extends Component {
       inputs: {
         name: '',
         heled_at: '',
+        hobby: '',
         member_capacity: '',
         address: '',
         introduction: '',
-        hobby: '',
       },
     };
     this.handleDrop = this.handleDrop.bind(this);
@@ -31,10 +31,10 @@ class CreateEvent extends Component {
     params.append('name', `${this.state.inputs.name}`);
     params.append('heled_at', `${this.state.inputs.heled_at}`);
     //params.append('image', `${this.state.image}`);
-    params.append('member_capacity', `${this.state.inputs.member_capacity}`);
-    params.append('introduction', `${this.state.inputs.introduction}`);
     params.append('hobby', `${this.state.inputs.hobby}`);
+    params.append('member_capacity', `${this.state.inputs.member_capacity}`);
     params.append('address', `${this.state.inputs.address}`);
+    params.append('introduction', `${this.state.inputs.introduction}`);
 
     axios
       .post('http://localhost:8000/event_api/event/', params)

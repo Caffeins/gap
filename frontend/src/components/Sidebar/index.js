@@ -13,6 +13,7 @@ import CreateClan from '../../components/pages/Board/Clan/CreateClan.js';
 import CreateEvent from '../../components/pages/Events/CreateEvent.js';
 import EventList from '../../components/pages/Events';
 import UpdateProfile from '../../components/pages/MyUser/UpdateProfile.js';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 
 class Sidebar extends Component {
   constructor() {
@@ -36,8 +37,14 @@ class Sidebar extends Component {
         <div>
           <Drawer variant="permanent" anchor="left">
             <List>
+              <h1>Gather&Play</h1>
+            </List>
+            <Divider />
+            <List>
               <ListItem>
-                <Avatar src={this.state.user.image} />
+                <ListItemAvatar>
+                  <Avatar src={this.state.user.image} />
+                </ListItemAvatar>
                 <ListItemText primary={this.state.user.name} />
               </ListItem>
               <ListItem>
