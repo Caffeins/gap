@@ -9,8 +9,8 @@ class ClanSerializer(serializers.ModelSerializer):
         fields = (
             "name",
             "founded_date",
-            "image",
             "point",
+            "image",
             "introduction",
             "hobby",
         )

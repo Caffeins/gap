@@ -7,15 +7,15 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
-            "clan",
-            "email",
+            # "clan",
+            # "email",
             "date_of_birth",
             "name",
             "alias",
             "image",
             "hobby",
             "place",
-            "is_active",
-            "is_admin",
+            # "is_active",
+            # "is_admin",
             "introduction",
         )

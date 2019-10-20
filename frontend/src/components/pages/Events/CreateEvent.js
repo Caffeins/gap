@@ -5,34 +5,22 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import Button from '@material-ui/core/Button';
 
-class UpdateProfile extends Component {
+class CreateEvent extends Component {
   constructor(props) {
     super(props);
     this.state = {
       image: [],
       inputs: {
         name: '',
-        alias: '',
-        hobby: '',
-        place: '',
-        email: '',
-        date_of_birth: '',
+        heled_at: '',
+        member_capacity: '',
+        address: '',
         introduction: '',
+        hobby: '',
       },
     };
     this.handleDrop = this.handleDrop.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentDidMount() {
-    axios.get('http://localhost:8000/account_api/users/1/').then(response => {
-      this.setState({
-        inputs: response.data,
-      });
-      console.log('hello');
-      console.table(this.state.inputs);
-      console.log(this.state.inputs.name);
-    });
   }
 
   handleDrop(file) {
@@ -40,16 +28,16 @@ class UpdateProfile extends Component {
   }
   handleSubmit(e) {
     let params = new URLSearchParams();
-    params.append('name', `${this.state.inputs.email}`);
-    params.append('founded_date', `${this.state.inputs.date_of_birth}`);
+    params.append('name', `${this.state.inputs.name}`);
+    params.append('heled_at', `${this.state.inputs.heled_at}`);
     //params.append('image', `${this.state.image}`);
-    params.append('point', `${this.state.inputs.alias}`);
+    params.append('member_capacity', `${this.state.inputs.member_capacity}`);
     params.append('introduction', `${this.state.inputs.introduction}`);
     params.append('hobby', `${this.state.inputs.hobby}`);
-    params.append('place', `${this.state.inputs.place}`);
+    params.append('address', `${this.state.inputs.address}`);
 
     axios
-      .put('http://localhost:8000/account_api/users/1', params)
+      .post('http://localhost:8000/event_api/event/', params)
       .then(function(response) {
         console.log(this.state.inputs);
         console.log(response);
@@ -67,7 +55,7 @@ class UpdateProfile extends Component {
   render() {
     return (
       <FormControl>
-        <label>名前</label>
+        <label>イベント名</label>
         <Input
           name="name"
           value={this.state.inputs.name}
@@ -78,16 +66,16 @@ class UpdateProfile extends Component {
             })
           }
         />
-        <label>ニックネーム</label>
+        <label>開催日</label>
         <Input
-          name="alias"
+          name="heled_at"
           onChange={e =>
             this.handleChange({
               ...this.state,
-              inputs: {...this.state.inputs, alias: e.target.value},
+              inputs: {...this.state.inputs, heled_at: e.target.value},
             })
           }
-          value={this.state.inputs.alias}
+          value={this.state.inputs.heled_at}
         />
         <label>趣味</label>
         <Input
@@ -98,42 +86,20 @@ class UpdateProfile extends Component {
               inputs: {...this.state.inputs, hobby: e.target.value},
             })
           }
-          value={this.state.inputs['hobby']}
+          value={this.state.inputs.hobby}
         />
-        <label>住んでるところ</label>
+        <label>メンバー人数</label>
         <Input
-          name="place"
+          name="member_capacity"
           onChange={e =>
             this.handleChange({
               ...this.state,
-              inputs: {...this.state.inputs, place: e.target.value},
+              inputs: {...this.state.inputs, member_capacity: e.target.value},
             })
           }
-          value={this.state.inputs.place}
+          value={this.state.inputs.member_capacity}
         />
-        <label>Eメール</label>
-        <Input
-          name="email"
-          onChange={e =>
-            this.handleChange({
-              ...this.state,
-              inputs: {...this.state.inputs, email: e.target.value},
-            })
-          }
-          value={this.state.inputs.email}
-        />
-        <label>誕生日</label>
-        <Input
-          name="birthday"
-          onChange={e =>
-            this.handleChange({
-              ...this.state,
-              inputs: {...this.state.inputs, date_of_birth: e.target.value},
-            })
-          }
-          value={this.state.inputs.date_of_birth}
-        />
-        <label>プロフィール画像</label>
+        <label>クラン画像</label>
         <DropZone onDrop={file => this.handleDrop(file)}>
           {({getRootProps, getInputProps}) => (
             <section>
@@ -155,7 +121,7 @@ class UpdateProfile extends Component {
             />
           );
         })}
-        <label>自己紹介</label>
+        <label>イベント紹介</label>
         <Input
           name="introduction"
           onChange={e =>
@@ -166,6 +132,17 @@ class UpdateProfile extends Component {
           }
           value={this.state.inputs.introduction}
         />
+        <label>住所</label>
+        <Input
+          name="address"
+          onChange={e =>
+            this.handleChange({
+              ...this.state,
+              inputs: {...this.state.inputs, address: e.target.value},
+            })
+          }
+          value={this.state.inputs.address}
+        />
         <Button variant="raised" onClick={this.handleSubmit}>
           Submit
         </Button>
@@ -174,4 +151,4 @@ class UpdateProfile extends Component {
   }
 }
 
-export default UpdateProfile;
+export default CreateEvent;
