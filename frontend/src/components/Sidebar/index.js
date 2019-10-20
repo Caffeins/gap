@@ -13,6 +13,7 @@ import CreateClan from '../../components/pages/Board/Clan/CreateClan.js';
 import CreateEvent from '../../components/pages/Events/CreateEvent.js';
 import EventList from '../../components/pages/Events';
 import UpdateProfile from '../../components/pages/MyUser/UpdateProfile.js';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 
 class Sidebar extends Component {
   constructor() {
@@ -36,8 +37,14 @@ class Sidebar extends Component {
         <div>
           <Drawer variant="permanent" anchor="left">
             <List>
+              <h1>Gather&Play</h1>
+            </List>
+            <Divider />
+            <List>
               <ListItem>
-                <Avatar src={this.state.user.image} />
+                <ListItemAvatar>
+                  <Avatar src={this.state.user.image} />
+                </ListItemAvatar>
                 <ListItemText primary={this.state.user.name} />
               </ListItem>
               <ListItem>
@@ -49,12 +56,14 @@ class Sidebar extends Component {
             </List>
             <Divider />
             <List>
-              <Link to="/">
+              <Link to="/" style={{textDecoration: 'none', color: 'black'}}>
                 <ListItem button>
                   <ListItemText primary={'ホーム'} />
                 </ListItem>
               </Link>
-              <Link to="/user/update">
+              <Link
+                to="/user/update"
+                style={{textDecoration: 'none', color: 'black'}}>
                 <ListItem button>
                   <ListItemText primary={'プロフィールを編集'} />
                 </ListItem>
@@ -62,29 +71,34 @@ class Sidebar extends Component {
               <ListItem button>
                 <ListItemText primary={'所属クラン'} />
               </ListItem>
-              <Link to="/events">
+              <Link
+                to="/events"
+                style={{textDecoration: 'none', color: 'black'}}>
                 <ListItem button>
-                  <ListItemText primary={'参加しているイベント'} />
+                  <ListItemText primary={'イベント一覧'} />
                 </ListItem>
               </Link>
-              <Link to="/follow">
+              <Link
+                to="/follow"
+                style={{textDecoration: 'none', color: 'black'}}>
                 <ListItem button>
                   <ListItemText primary={'フォロー/フォロワー'} />
                 </ListItem>
               </Link>
-              <Link to="/clan/create">
+              <Link
+                to="/clan/create"
+                style={{textDecoration: 'none', color: 'black'}}>
                 <ListItem button>
                   <ListItemText primary={'クランを作成'} />
                 </ListItem>
               </Link>
-              <Link to="/event/create">
+              <Link
+                to="/event/create"
+                style={{textDecoration: 'none', color: 'black'}}>
                 <ListItem button>
                   <ListItemText primary={'イベントを作成'} />
                 </ListItem>
               </Link>
-              <ListItem button>
-                <ListItemText primary={'フォローする/はずす'} />
-              </ListItem>
             </List>
             <Divider />
             <List>
