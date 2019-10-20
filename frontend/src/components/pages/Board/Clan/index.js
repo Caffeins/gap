@@ -27,7 +27,18 @@ const ClanBoard = props => {
     <div>
       <Card className={classes.card}>
         <CardHeader title={clan.name} subheader={clan.founded_date} />
-        <CardMedia image={clan.image} />
+        {(() => {
+          if (clan.image) {
+            return (
+              <CardMedia
+                style={{height: 0, paddingTop: '56.25%'}}
+                image={clan.image}
+              />
+            );
+          } else {
+            return;
+          }
+        })()}
         <CardContent>{clan.introduction}</CardContent>
         <Button variant="contained" color="primary">
           詳細

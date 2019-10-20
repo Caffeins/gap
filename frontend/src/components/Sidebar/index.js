@@ -9,6 +9,8 @@ import axios from 'axios';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import UserList from '../../components/pages/Board/UserIndex.js';
 import Board from '../../components/pages/Board/ClanIndex.js';
+import CreateClan from '../../components/pages/Board/Clan/CreateClan.js';
+import CreateEvent from '../../components/pages/Events/CreateEvent.js';
 import EventList from '../../components/pages/Events';
 import UpdateProfile from '../../components/pages/MyUser/UpdateProfile.js';
 
@@ -70,12 +72,16 @@ class Sidebar extends Component {
                   <ListItemText primary={'フォロー/フォロワー'} />
                 </ListItem>
               </Link>
-              <ListItem button>
-                <ListItemText primary={'クランを作成'} />
-              </ListItem>
-              <ListItem button>
-                <ListItemText primary={'イベントを作成'} />
-              </ListItem>
+              <Link to="/clan/create">
+                <ListItem button>
+                  <ListItemText primary={'クランを作成'} />
+                </ListItem>
+              </Link>
+              <Link to="/event/create">
+                <ListItem button>
+                  <ListItemText primary={'イベントを作成'} />
+                </ListItem>
+              </Link>
               <ListItem button>
                 <ListItemText primary={'フォローする/はずす'} />
               </ListItem>
@@ -89,6 +95,12 @@ class Sidebar extends Component {
           </Drawer>
 
           <Switch>
+            <Route path="/event/create">
+              <CreateEvent />
+            </Route>
+            <Route path="/clan/create">
+              <CreateClan />
+            </Route>
             <Route path="/user/update">
               <UpdateProfile />
             </Route>
