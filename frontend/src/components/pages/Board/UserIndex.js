@@ -20,9 +20,10 @@ class UserList extends Component {
 
   render() {
     const {users} = this.state;
+    const U = users.filter(u => u.name !== '裸の王様');
     return (
       <div>
-        {users.map(user => (
+        {U.map(user => (
           <UserCard user={user} />
         ))}
       </div>
