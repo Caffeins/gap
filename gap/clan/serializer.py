@@ -14,3 +14,4 @@ class ClanSerializer(serializers.ModelSerializer):
             "introduction",
             "hobby",
         )
+
